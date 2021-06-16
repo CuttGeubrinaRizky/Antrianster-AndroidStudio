@@ -42,37 +42,6 @@ public class DataPasien{
         database.insert(DatabaseHelper.TABLE_PASIEN, null, values);
     }
 
-    public List<Pasien> getAllPasien(){
-        database = dbhelper.getReadableDatabase();
-
-        List<Pasien> listPasien = new ArrayList<Pasien>();
-
-        //select all data pasien
-        String allPasien = "SELECT * FROM " + DatabaseHelper.TABLE_PASIEN;
-        Cursor cursor = database.rawQuery(allPasien, null);
-
-        //looping through all rows and adding to list
-        if (cursor.moveToFirst()) {
-            do {
-                Pasien pasien = new Pasien();
-                pasien.setId(Integer.parseInt(cursor.getString(0)));
-                pasien.setNik(cursor.getString(1));
-                pasien.setNama(cursor.getString(2));
-                pasien.setJk(cursor.getString(3));
-                pasien.set_tgl(cursor.getString(4));
-                pasien.setAlamat(cursor.getString(5));
-                pasien.setNohp(cursor.getString(6));
-                pasien.setAgama(cursor.getString(7));
-
-                //adding mahasiswa to the list
-                listPasien.add(pasien);
-            } while (cursor.moveToNext());
-        }
-
-        cursor.close();
-        return listPasien;
-    }
-
     public Pasien logInUser(String nik, String tgl) {
         database = dbhelper.getReadableDatabase();
         String queryUser = "SELECT * FROM " + DatabaseHelper.TABLE_PASIEN +" WHERE " + DatabaseHelper.KEY_NIK + "= '" + nik + "' and " + DatabaseHelper.KEY_TANGGAL + "= '" + tgl + "'";
@@ -114,6 +83,37 @@ public class DataPasien{
         String queryString = "UPDATE " + DatabaseHelper.TABLE_PASIEN
                 + " SET " + DatabaseHelper.KEY_LOGGED + " = " + log + " WHERE " + DatabaseHelper.KEY_ID + " = " + id;
         database.execSQL(queryString);
+    }
+
+    public List<Pasien> getAllPasien(){
+        database = dbhelper.getReadableDatabase();
+
+        List<Pasien> listPasien = new ArrayList<Pasien>();
+
+        //select all data pasien
+        String allPasien = "SELECT * FROM " + DatabaseHelper.TABLE_PASIEN;
+        Cursor cursor = database.rawQuery(allPasien, null);
+
+        //looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                Pasien pasien = new Pasien();
+                pasien.setId(Integer.parseInt(cursor.getString(0)));
+                pasien.setNik(cursor.getString(1));
+                pasien.setNama(cursor.getString(2));
+                pasien.setJk(cursor.getString(3));
+                pasien.set_tgl(cursor.getString(4));
+                pasien.setAlamat(cursor.getString(5));
+                pasien.setNohp(cursor.getString(6));
+                pasien.setAgama(cursor.getString(7));
+
+                //adding mahasiswa to the list
+                listPasien.add(pasien);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        return listPasien;
     }
 
     public Pasien getLoggedInUser(){
