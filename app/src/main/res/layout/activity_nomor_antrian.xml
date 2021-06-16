@@ -34,10 +34,10 @@
         android:id="@+id/textViewAntrian"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="124dp"
+        android:layout_marginBottom="80dp"
         android:fontFamily="@font/merriweather_bold"
         android:textColor="#453F3F"
-        android:textSize="45sp"
+        android:textSize="70sp"
         app:layout_constraintBottom_toTopOf="@+id/btnKembali"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

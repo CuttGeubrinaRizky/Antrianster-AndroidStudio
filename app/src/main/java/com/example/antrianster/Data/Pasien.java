@@ -10,6 +10,7 @@ public class Pasien {
     String _nohp;
     String _agama;
     String _nik;
+    int _logged;
 
     //Empty constructor
     //Default constructor
@@ -26,6 +27,7 @@ public class Pasien {
         this._nohp = nohp;
         this._agama = agama;
         this._nik = nik;
+        this._logged = 1;
     }
 
 
@@ -85,5 +87,13 @@ public class Pasien {
 
     public void setNik(String nik) {
         this._nik = nik;
+    }
+
+    public int getLogged() {
+        return this._logged;
+    }
+
+    public void setLogged(int logged) {
+        this._logged = logged;
     }
 }
